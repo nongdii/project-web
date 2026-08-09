@@ -3,3 +3,154 @@
   <h1> hello , I am a CMUBS students.</hi> 
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanna Eats - อาหารเหนือต้นตำรับ</title>
+    <style>
+        /* ตั้งค่าพื้นฐานและการรองรับมือถือ */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #d35400;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        /* Value Proposition */
+        .value-prop {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        h2 {
+            text-align: center;
+            color: #d35400;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+        }
+        /* แคตตาล็อกเมนู */
+        .menu-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        @media (min-width: 600px) {
+            .menu-list {
+                grid-template-columns: 1fr 1fr; /* แสดง 2 คอลัมน์บนจอใหญ่ */
+            }
+        }
+        .menu-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .menu-price {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        /* กิจกรรมลูกค้า - ปุ่มสั่งอาหาร */
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .order-btn {
+            display: inline-block;
+            background-color: #00B900; /* สีเขียว LINE */
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .order-btn:hover {
+            background-color: #009900;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lanna Eats</h1>
+        <!-- 1. ส่วนหน้าแรก: ชื่อกิจการและ value proposition -->
+        <p class="value-prop">เสิร์ฟความอร่อยของข้าวซอยต้นตำรับและอาหารเหนือแท้ๆ ส่งตรงถึงมือคุณ</p>
+    </header>
+
+    <div class="container">
+        <!-- 2. แคตตาล็อก: สินค้า/บริการ พร้อมชื่อและราคา -->
+        <h2>เมนูยอดฮิต (Recommended Menu)</h2>
+        <div class="menu-list">
+            <div class="menu-item">
+                <span class="menu-name">ข้าวซอยไก่ <br><small>Khao Soi Chicken</small></span>
+                <span class="menu-price">69 ฿</span>
+            </div>
+            <div class="menu-item">
+                <span class="menu-name">แคบหมู <br><small>Pork Crackling</small></span>
+                <span class="menu-price">39 ฿</span>
+            </div>
+            <div class="menu-item">
+                <span class="menu-name">ข้าวซอยเจ <br><small>Khao Soi Vegan</small></span>
+                <span class="menu-price">69 ฿</span>
+            </div>
+            <div class="menu-item">
+                <span class="menu-name">ชาเย็น <br><small>Thai Iced Tea</small></span>
+                <span class="menu-price">29 ฿</span>
+            </div>
+            <div class="menu-item">
+                <span class="menu-name">ข้าวซอยทะเล <br><small>Khao Soi Seafood</small></span>
+                <span class="menu-price">99 ฿</span>
+            </div>
+        </div>
+
+        <!-- 3. กิจกรรมของลูกค้า 1 อย่าง: ช่องทางสั่งซื้อ -->
+        <div class="cta-section">
+            <h3>หิวแล้วใช่ไหม? สั่งอาหารได้เลย!</h3>
+            <p>สอบถามเมนูเพิ่มเติมหรือสั่งอาหารผ่าน LINE ของร้าน</p>
+            <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="order-btn">💬 สั่งอาหารผ่าน LINE OA</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lanna Eats. สาขาช้างคลาน และ นิมมาน</p>
+    </footer>
+
+</body>
+</html>
