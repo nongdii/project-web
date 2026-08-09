@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanna Eats | เมนูอาหาร</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Prompt', sans-serif; margin: 0; padding: 0; background-color: #FDF8F5; color: #333; }
+        header { background-color: #E65100; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        h2 { text-align: center; color: #E65100; font-size: 2rem; margin-bottom: 30px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .menu-card { background: white; padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #FF8F00; }
+        .menu-info h3 { margin: 0; font-size: 1.1rem; }
+        .menu-info p { margin: 0; font-size: 0.9rem; color: #777; }
+        .menu-price { font-weight: bold; font-size: 1.2rem; color: #2E7D32; }
+        .bottom-nav { display: block; text-align: center; margin-top: 30px; padding-bottom: 30px; }
+        .btn { background-color: #E65100; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Lanna Eats</a>
+        <nav>
+            <a href="index.html">หน้าแรก</a>
+            <a href="menu.html">เมนูอาหาร</a>
+            <a href="order.html">สั่งอาหาร</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>แคตตาล็อกเมนูทั้งหมด</h2>
+        <div class="menu-grid">
+            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยไก่</h3><p>Khao Soi Chicken</p></div><div class="menu-price">69 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยเนื้อ</h3><p>Khao Soi Beef</p></div><div class="menu-price">79 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยเจ</h3><p>Khao Soi Vegan</p></div><div class="menu-price">69 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ไส้อั่ว</h3><p>Sai Ua Sausage</p></div><div class="menu-price">49 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>แคบหมู</h3><p>Pork Crackling</p></div><div class="menu-price">39 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยทะเล</h3><p>Khao Soi Seafood</p></div><div class="menu-price">99 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ชาเย็น</h3><p>Thai Iced Tea</p></div><div class="menu-price">29 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>น้ำส้ม</h3><p>Orange Juice</p></div><div class="menu-price">35 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ขนมจีนน้ำเงี้ยว</h3><p>Khanom Jeen Nam Ngiao</p></div><div class="menu-price">59 ฿</div></div>
+            <div class="menu-card"><div class="menu-info"><h3>ข้าวเหนียว</h3><p>Sticky Rice</p></div><div class="menu-price">15 ฿</div></div>
+        </div>
+        
+        <div class="bottom-nav">
+            <a href="order.html" class="btn">ไปที่หน้าสั่งอาหาร 👉</a>
+        </div>
+    </div>
+</body>
+</html>
