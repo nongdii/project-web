@@ -35,6 +35,11 @@
         
         .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; text-transform: uppercase; }
         .logo span { color: var(--primary); }
+        
+        /* สไตล์ปุ่มเมนูมือถือ (ซ่อนไว้ในจอคอม) */
+        .menu-toggle { display: none; color: white; font-size: 1.8rem; cursor: pointer; user-select: none; }
+        
+        nav { display: flex; }
         nav a { color: white; text-decoration: none; margin-left: 30px; font-size: 1.1rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
@@ -64,142 +69,75 @@
         }
         .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(230, 81, 0, 0.15); }
         
-        .menu-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
+        .menu-img { width: 100%; height: 200px; object-fit: cover; }
         .menu-details { padding: 20px; }
         .menu-title { font-size: 1.3rem; font-weight: 600; margin: 0 0 5px 0; }
         .menu-en { font-size: 0.9rem; color: #888; margin: 0 0 15px 0; }
         
         .price-cart-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #eee;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 15px; padding-top: 15px; border-top: 1px dashed #eee;
         }
         .menu-price { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
         
         .btn-add {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-family: 'Kanit', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.3s;
+            background-color: var(--primary); color: white; border: none;
+            padding: 8px 15px; border-radius: 20px; font-family: 'Kanit', sans-serif;
+            font-weight: 500; cursor: pointer; transition: 0.3s;
         }
         .btn-add:hover { background-color: var(--primary-hover); }
 
         .cart-sidebar {
-            position: fixed;
-            top: 0; right: -400px;
-            width: 350px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-            transition: right 0.4s ease;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
+            position: fixed; top: 0; right: -400px; width: 350px; height: 100vh;
+            background: white; box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            transition: right 0.4s ease; z-index: 1000; display: flex; flex-direction: column;
         }
         .cart-sidebar.open { right: 0; }
         
-        .cart-header {
-            background: var(--dark);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .cart-header { background: var(--dark); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
         .cart-header h2 { margin: 0; font-size: 1.5rem; }
         .close-cart { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
         
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         .cart-item-info h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
         .cart-item-price { color: var(--primary); font-weight: 600; }
         
         .qty-controls { display: flex; align-items: center; gap: 10px; }
         .qty-btn { background: #eee; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; font-weight: bold; }
         
-        .cart-footer {
-            padding: 20px;
-            background: #fafafa;
-            border-top: 1px solid #eee;
-        }
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        .btn-checkout {
-            display: block;
-            width: 100%;
-            background: #00B900;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            box-sizing: border-box;
-        }
+        .cart-footer { padding: 20px; background: #fafafa; border-top: 1px solid #eee; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
+        .btn-checkout { display: block; width: 100%; background: #00B900; color: white; text-align: center; padding: 15px; border-radius: 30px; text-decoration: none; font-size: 1.2rem; font-weight: 600; box-sizing: border-box; }
         .btn-checkout:hover { background: #009900; }
 
         .floating-cart {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            background: var(--primary);
-            color: white;
-            width: 65px; height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.4);
-            z-index: 90;
-            transition: 0.3s;
+            position: fixed; bottom: 30px; right: 30px; background: var(--primary);
+            color: white; width: 65px; height: 65px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; font-size: 1.5rem; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.4); z-index: 90; transition: 0.3s;
         }
         .floating-cart:hover { transform: scale(1.1); }
-        .cart-badge {
-            position: absolute;
-            top: 0; right: 0;
-            background: #1A1A1A;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: bold;
-            width: 24px; height: 24px;
-            border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-        }
+        .cart-badge { position: absolute; top: 0; right: 0; background: #1A1A1A; color: white; font-size: 0.9rem; font-weight: bold; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
 
+        /* ปรับเมนูมือถือแบบ Dropdown */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            nav a { margin-left: 15px; font-size: 1rem; }
+            header { padding: 15px 20px; flex-wrap: wrap; }
+            .menu-toggle { display: block; }
+            nav {
+                display: none; /* ซ่อนเมนูไว้ก่อน */
+                flex-direction: column;
+                width: 100%;
+                background-color: #222;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            nav.show { display: flex; } /* แสดงเมื่อกดปุ่ม */
+            nav a { margin: 10px 0; text-align: center; padding: 10px; font-size: 1.1rem; }
+            
             .cart-sidebar { width: 100%; right: -100%; }
         }
     </style>
@@ -208,7 +146,9 @@
 
     <header>
         <a href="index.html" class="logo">Lanna<span>Eats</span></a>
-        <nav>
+        <!-- ปุ่ม 3 ขีด สำหรับมือถือ -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="nav-menu">
             <a href="index.html">หน้าแรก</a>
             <a href="menu.html" class="active">เมนูอาหาร</a>
             <a href="order.html">สั่งอาหาร</a>
@@ -345,13 +285,10 @@
         </div>
     </div>
 
-    <!-- ปุ่มลอยเปิดตะกร้า -->
     <div class="floating-cart" onclick="toggleCart()">
-        🛒
-        <div class="cart-badge" id="cart-count">0</div>
+        🛒<div class="cart-badge" id="cart-count">0</div>
     </div>
 
-    <!-- แถบตะกร้าสินค้า (Sidebar) -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h2>ออเดอร์ของคุณ</h2>
@@ -361,17 +298,18 @@
             <p style="text-align: center; color: #888; margin-top: 50px;">ตะกร้ายังว่างเปล่า<br>เลือกเมนูที่ชอบได้เลย!</p>
         </div>
         <div class="cart-footer">
-            <div class="cart-total">
-                <span>ยอดรวม:</span>
-                <span id="total-price">0 ฿</span>
-            </div>
+            <div class="cart-total"><span>ยอดรวม:</span><span id="total-price">0 ฿</span></div>
             <a href="order.html" class="btn-checkout">ยืนยันการสั่งซื้อ</a>
         </div>
     </div>
 
-    <!-- Script สำหรับระบบคำนวณและตะกร้าสินค้า -->
     <script>
         let cart = [];
+
+        // ฟังก์ชันสำหรับเปิด-ปิด เมนูมือถือ
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("show");
+        }
 
         function toggleCart() {
             document.getElementById('cart-sidebar').classList.toggle('open');
@@ -379,57 +317,41 @@
 
         function addToCart(name, price) {
             let existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.qty += 1;
-            } else {
-                cart.push({ name: name, price: price, qty: 1 });
-            }
+            if (existingItem) { existingItem.qty += 1; } 
+            else { cart.push({ name: name, price: price, qty: 1 }); }
             updateCart();
-            
             document.getElementById('cart-sidebar').classList.add('open');
         }
 
         function changeQty(index, change) {
             cart[index].qty += change;
-            if (cart[index].qty <= 0) {
-                cart.splice(index, 1);
-            }
+            if (cart[index].qty <= 0) { cart.splice(index, 1); }
             updateCart();
         }
 
         function updateCart() {
             let cartItemsDiv = document.getElementById('cart-items');
-            let total = 0;
-            let count = 0;
+            let total = 0, count = 0;
             
             if (cart.length === 0) {
                 cartItemsDiv.innerHTML = '<p style="text-align: center; color: #888; margin-top: 50px;">ตะกร้ายังว่างเปล่า<br>เลือกเมนูที่ชอบได้เลย!</p>';
             } else {
                 cartItemsDiv.innerHTML = '';
                 cart.forEach((item, index) => {
-                    total += item.price * item.qty;
-                    count += item.qty;
-                    
+                    total += item.price * item.qty; count += item.qty;
                     cartItemsDiv.innerHTML += `
                         <div class="cart-item">
-                            <div class="cart-item-info">
-                                <h4>${item.name}</h4>
-                                <span class="cart-item-price">${item.price * item.qty} ฿</span>
-                            </div>
+                            <div class="cart-item-info"><h4>${item.name}</h4><span class="cart-item-price">${item.price * item.qty} ฿</span></div>
                             <div class="qty-controls">
-                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
-                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button><span>${item.qty}</span>
                                 <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
             }
-            
             document.getElementById('total-price').innerText = total + ' ฿';
             document.getElementById('cart-count').innerText = count;
         }
     </script>
-
 </body>
 </html>
