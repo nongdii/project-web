@@ -67,7 +67,7 @@
         .card h2 { color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
 
         .order-section { text-align: center; }
-        .order-section p { color: #555; margin-bottom: 25px; }
+        .order-section p { color: #555; margin-bottom: 25px; line-height: 1.6; }
         
         .btn-line {
             display: flex; justify-content: center; align-items: center; gap: 10px;
@@ -79,9 +79,15 @@
         }
         .btn-line:hover { background-color: var(--line-hover); transform: translateY(-3px); }
         
-        .branch { background: var(--light); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
-        .branch h4 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
-        .branch p { margin: 0; font-size: 1rem; color: #555; line-height: 1.5; }
+        .branch { 
+            background: var(--light); 
+            padding: 15px 20px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid var(--primary); 
+        }
+        .branch h4 { margin: 0 0 8px 0; color: var(--primary); font-size: 1.15rem; }
+        .branch p { margin: 0; font-size: 1rem; color: #555; line-height: 1.6; }
 
         footer { text-align: center; padding: 30px; color: #777; font-size: 0.9rem; margin-top: 20px; }
 
@@ -109,10 +115,10 @@
     </div>
 
     <div class="container">
-        <!-- ฝั่งซ้าย: ช่องทางติดต่อตามข้อกำหนด 3.3 -->
+        <!-- ฝั่งซ้าย: ช่องทางติดต่อตามข้อกำหนด -->
         <div class="card order-section">
             <h2>ออเดอร์เลยตอนนี้ 🛵</h2>
-            <p>ส่งรายการอาหารที่คุณเลือกไว้ในตะกร้ามาทาง LINE OA เพื่อสั่งอาหาร</p>
+            <p>ส่งรายการอาหารที่คุณเลือกไว้ในตะกร้ามาทาง LINE OA เพื่อสั่งอาหาร ทีมงานของเราพร้อมให้บริการรับออเดอร์ของคุณ</p>
             
             <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="btn-line">
                 💬 สั่งอาหารผ่าน LINE OA
@@ -124,12 +130,16 @@
             <h2>สาขาที่ให้บริการ 📍</h2>
             
             <div class="branch">
-                <h4>สาขา Chang Klan Night Market</h4>
-                <p>📍 ที่ตั้ง: Chang Klan<br>📅 เปิดให้บริการตั้งแต่: 1 มิ.ย. 2023</p>
+                <h4>Chang Klan Night Market</h4>
+                <p>📍 ที่ตั้ง: Chang Klan<br>📅 เปิดให้บริการ: 2023-06-01</p>
             </div>
             <div class="branch">
-                <h4>สาขา Nimman</h4>
-                <p>📍 ที่ตั้ง: Nimmanhaemin<br>📅 เปิดให้บริการตั้งแต่: 15 ก.พ. 2024</p>
+                <h4>Nimman</h4>
+                <p>📍 ที่ตั้ง: Nimmanhaemin<br>📅 เปิดให้บริการ: 2024-02-15</p>
+            </div>
+            <div class="branch">
+                <h4>Old City</h4>
+                <p>📍 ที่ตั้ง: Tha Phae Gate<br>📅 เปิดให้บริการ: 2025-01-10</p>
             </div>
         </div>
     </div>
