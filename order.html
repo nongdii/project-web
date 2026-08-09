@@ -24,7 +24,6 @@
             color: var(--dark);
         }
 
-        /* เมนูด้านบน */
         header {
             background-color: var(--dark);
             padding: 20px 50px;
@@ -41,7 +40,6 @@
         nav a { color: white; text-decoration: none; margin-left: 30px; font-size: 1.1rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
-        /* ส่วนหัวของหน้า */
         .page-header {
             text-align: center;
             padding: 60px 20px;
@@ -51,7 +49,6 @@
         .page-header h1 { font-size: 2.5rem; color: var(--primary); margin: 0 0 10px 0; }
         .page-header p { color: #666; font-size: 1.1rem; margin: 0; }
 
-        /* จัด Layout เป็น 2 คอลัมน์ */
         .container {
             max-width: 1000px;
             margin: 40px auto;
@@ -61,7 +58,6 @@
             gap: 30px;
         }
 
-        /* กล่องการ์ดทั่วไป */
         .card {
             background: white;
             padding: 30px;
@@ -70,7 +66,6 @@
         }
         .card h2 { color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
 
-        /* ส่วนปุ่มสั่งซื้อ */
         .order-section { text-align: center; }
         .order-section p { color: #555; margin-bottom: 25px; }
         
@@ -84,28 +79,16 @@
         }
         .btn-line:hover { background-color: var(--line-hover); transform: translateY(-3px); }
         
-        .delivery-apps { display: flex; gap: 15px; justify-content: center; }
-        .btn-app {
-            flex: 1; padding: 12px; border-radius: 15px; text-decoration: none;
-            font-weight: 600; color: white; text-align: center; transition: 0.3s;
-        }
-        .bg-grab { background-color: #00B14F; }
-        .bg-grab:hover { background-color: #008f40; transform: translateY(-2px); }
-        .bg-panda { background-color: #D70F64; }
-        .bg-panda:hover { background-color: #b00c52; transform: translateY(-2px); }
-
-        /* ส่วนข้อมูลสาขา */
         .branch { background: var(--light); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
         .branch h4 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
-        .branch p { margin: 0; font-size: 0.95rem; color: #555; line-height: 1.5; }
+        .branch p { margin: 0; font-size: 1rem; color: #555; line-height: 1.5; }
 
         footer { text-align: center; padding: 30px; color: #777; font-size: 0.9rem; margin-top: 20px; }
 
-        /* สำหรับมือถือ */
         @media (max-width: 768px) {
             header { padding: 15px 20px; }
             nav a { margin-left: 15px; font-size: 1rem; }
-            .container { grid-template-columns: 1fr; } /* ยุบเหลือ 1 คอลัมน์บนมือถือ */
+            .container { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
@@ -122,209 +105,35 @@
 
     <div class="page-header">
         <h1>ช่องทางการสั่งซื้อ</h1>
-        <p>หิวแล้วใช่ไหม? สั่งอาหารล่วงหน้า หรือตรวจสอบสาขาใกล้คุณได้เลย</p>
+        <p>ตรวจสอบสาขาใกล้คุณ และสั่งอาหารผ่านช่องทางออนไลน์</p>
     </div>
 
     <div class="container">
-        <!-- ฝั่งซ้าย: ปุ่มสั่งอาหาร -->
+        <!-- ฝั่งซ้าย: ช่องทางติดต่อตามข้อกำหนด 3.3 -->
         <div class="card order-section">
             <h2>ออเดอร์เลยตอนนี้ 🛵</h2>
-            <p>หากคุณเลือกเมนูไว้ในตะกร้าแล้ว สามารถแคปหน้าจอส่งมาทาง LINE OA เพื่อสั่งอาหารหรือจองโต๊ะล่วงหน้าได้ทันที</p>
+            <p>ส่งรายการอาหารที่คุณเลือกไว้ในตะกร้ามาทาง LINE OA เพื่อสั่งอาหาร</p>
             
             <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="btn-line">
                 💬 สั่งอาหารผ่าน LINE OA
             </a>
-            
-            <p style="margin-top: 30px; margin-bottom: 15px; font-size: 0.95rem; color: #888;">หรือสั่งผ่านแอปเดลิเวอรี่</p>
-            <div class="delivery-apps">
-                <a href="#" class="btn-app bg-grab">GrabFood</a>
-                <a href="#" class="btn-app bg-panda">Foodpanda</a>
-            </div>
         </div>
 
-        <!-- ฝั่งขวา: ข้อมูลสาขาจาก stalls.csv -->
+        <!-- ฝั่งขวา: ข้อมูลสาขาจากไฟล์ stalls.csv -->
         <div class="card">
             <h2>สาขาที่ให้บริการ 📍</h2>
             
             <div class="branch">
-                <h4>สาขา Chang Klan Night Market</h4>
-                <p>📍 ที่ตั้ง: Chang Klan<br>📅 เปิดให้บริการตั้งแต่: 1 มิ.ย. 2023</p>
+                <h4>Chang Klan Night Market</h4>
+                <p>Location: Chang Klan</p>
             </div>
             <div class="branch">
-                <h4>สาขา Nimman</h4>
-                <p>📍 ที่ตั้ง: Nimmanhaemin<br>📅 เปิดให้บริการตั้งแต่: 15 ก.พ. 2024</p>
+                <h4>Nimman</h4>
+                <p>Location: Nimmanhaemin</p>
             </div>
             <div class="branch">
-                <h4>สาขา Old City</h4>
-                <p>📍 ที่ตั้ง: Tha Phae Gate<br>📅 เปิดให้บริการตั้งแต่: 10 ม.ค. 2025</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Lanna Eats. All rights reserved.</p>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanna Eats | สั่งอาหารและสาขา</title>
-    <!-- โหลดฟอนต์ Kanit -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #E65100;
-            --primary-hover: #BF360C;
-            --dark: #1A1A1A;
-            --light: #FDFBF7;
-            --gray: #f5f5f5;
-            --line-green: #00B900;
-            --line-hover: #009900;
-        }
-        
-        body, html {
-            margin: 0; padding: 0;
-            font-family: 'Kanit', sans-serif;
-            background-color: var(--gray);
-            color: var(--dark);
-        }
-
-        /* เมนูด้านบน */
-        header {
-            background-color: var(--dark);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0; z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        
-        .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; text-transform: uppercase; }
-        .logo span { color: var(--primary); }
-        nav a { color: white; text-decoration: none; margin-left: 30px; font-size: 1.1rem; transition: 0.3s; }
-        nav a:hover, nav a.active { color: var(--primary); }
-
-        /* ส่วนหัวของหน้า */
-        .page-header {
-            text-align: center;
-            padding: 60px 20px;
-            background: white;
-            border-bottom: 1px solid #eaeaea;
-        }
-        .page-header h1 { font-size: 2.5rem; color: var(--primary); margin: 0 0 10px 0; }
-        .page-header p { color: #666; font-size: 1.1rem; margin: 0; }
-
-        /* จัด Layout เป็น 2 คอลัมน์ */
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        /* กล่องการ์ดทั่วไป */
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .card h2 { color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
-
-        /* ส่วนปุ่มสั่งซื้อ */
-        .order-section { text-align: center; }
-        .order-section p { color: #555; margin-bottom: 25px; }
-        
-        .btn-line {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            background-color: var(--line-green); color: white;
-            padding: 18px 30px; border-radius: 30px;
-            text-decoration: none; font-weight: 600; font-size: 1.2rem;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 185, 0, 0.3);
-            margin-bottom: 20px;
-        }
-        .btn-line:hover { background-color: var(--line-hover); transform: translateY(-3px); }
-        
-        .delivery-apps { display: flex; gap: 15px; justify-content: center; }
-        .btn-app {
-            flex: 1; padding: 12px; border-radius: 15px; text-decoration: none;
-            font-weight: 600; color: white; text-align: center; transition: 0.3s;
-        }
-        .bg-grab { background-color: #00B14F; }
-        .bg-grab:hover { background-color: #008f40; transform: translateY(-2px); }
-        .bg-panda { background-color: #D70F64; }
-        .bg-panda:hover { background-color: #b00c52; transform: translateY(-2px); }
-
-        /* ส่วนข้อมูลสาขา */
-        .branch { background: var(--light); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
-        .branch h4 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
-        .branch p { margin: 0; font-size: 0.95rem; color: #555; line-height: 1.5; }
-
-        footer { text-align: center; padding: 30px; color: #777; font-size: 0.9rem; margin-top: 20px; }
-
-        /* สำหรับมือถือ */
-        @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            nav a { margin-left: 15px; font-size: 1rem; }
-            .container { grid-template-columns: 1fr; } /* ยุบเหลือ 1 คอลัมน์บนมือถือ */
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <a href="index.html" class="logo">Lanna<span>Eats</span></a>
-        <nav>
-            <a href="index.html">หน้าแรก</a>
-            <a href="menu.html">เมนูอาหาร</a>
-            <a href="order.html" class="active">สั่งอาหาร</a>
-        </nav>
-    </header>
-
-    <div class="page-header">
-        <h1>ช่องทางการสั่งซื้อ</h1>
-        <p>หิวแล้วใช่ไหม? สั่งอาหารล่วงหน้า หรือตรวจสอบสาขาใกล้คุณได้เลย</p>
-    </div>
-
-    <div class="container">
-        <!-- ฝั่งซ้าย: ปุ่มสั่งอาหาร -->
-        <div class="card order-section">
-            <h2>ออเดอร์เลยตอนนี้ 🛵</h2>
-            <p>หากคุณเลือกเมนูไว้ในตะกร้าแล้ว สามารถแคปหน้าจอส่งมาทาง LINE OA เพื่อสั่งอาหารหรือจองโต๊ะล่วงหน้าได้ทันที</p>
-            
-            <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="btn-line">
-                💬 สั่งอาหารผ่าน LINE OA
-            </a>
-            
-            <p style="margin-top: 30px; margin-bottom: 15px; font-size: 0.95rem; color: #888;">หรือสั่งผ่านแอปเดลิเวอรี่</p>
-            <div class="delivery-apps">
-                <a href="#" class="btn-app bg-grab">GrabFood</a>
-                <a href="#" class="btn-app bg-panda">Foodpanda</a>
-            </div>
-        </div>
-
-        <!-- ฝั่งขวา: ข้อมูลสาขาจาก stalls.csv -->
-        <div class="card">
-            <h2>สาขาที่ให้บริการ 📍</h2>
-            
-            <div class="branch">
-                <h4>สาขา Chang Klan Night Market</h4>
-                <p>📍 ที่ตั้ง: Chang Klan<br>📅 เปิดให้บริการตั้งแต่: 1 มิ.ย. 2023</p>
-            </div>
-            <div class="branch">
-                <h4>สาขา Nimman</h4>
-                <p>📍 ที่ตั้ง: Nimmanhaemin<br>📅 เปิดให้บริการตั้งแต่: 15 ก.พ. 2024</p>
-            </div>
-            <div class="branch">
-                <h4>สาขา Old City</h4>
-                <p>📍 ที่ตั้ง: Tha Phae Gate<br>📅 เปิดให้บริการตั้งแต่: 10 ม.ค. 2025</p>
+                <h4>Old City</h4>
+                <p>Location: Tha Phae Gate</p>
             </div>
         </div>
     </div>
