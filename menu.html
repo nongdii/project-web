@@ -3,52 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanna Eats | เมนูอาหาร</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Lanna Eats | แคตตาล็อกเมนูอาหาร</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Prompt', sans-serif; margin: 0; padding: 0; background-color: #FDF8F5; color: #333; }
-        header { background-color: #E65100; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
-        nav a { color: white; text-decoration: none; margin-left: 20px; }
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        h2 { text-align: center; color: #E65100; font-size: 2rem; margin-bottom: 30px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .menu-card { background: white; padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #FF8F00; }
-        .menu-info h3 { margin: 0; font-size: 1.1rem; }
-        .menu-info p { margin: 0; font-size: 0.9rem; color: #777; }
-        .menu-price { font-weight: bold; font-size: 1.2rem; color: #2E7D32; }
-        .bottom-nav { display: block; text-align: center; margin-top: 30px; padding-bottom: 30px; }
-        .btn { background-color: #E65100; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; }
+        :root {
+            --primary: #E65100;
+            --primary-hover: #BF360C;
+            --dark: #1A1A1A;
+            --light: #FDFBF7;
+            --gray: #f5f5f5;
+        }
+        
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--gray);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* เมนูด้านบน */
+        header {
+            background-color: var(--dark);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0; z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; text-transform: uppercase; }
+        .logo span { color: var(--primary); }
+        nav a { color: white; text-decoration: none; margin-left: 30px; font-size: 1.1rem; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* ส่วนหัวของหน้าเมนู */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: white;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .page-header h1 { font-size: 2.5rem; color: var(--primary); margin: 0 0 10px 0; }
+        .page-header p { color: #666; font-size: 1.1rem; margin: 0; }
+
+        /* Grid แคตตาล็อกเมนู */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        /* การ์ดเมนู */
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(230, 81, 0, 0.15); }
+        
+        .menu-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-details { padding: 20px; }
+        .menu-title { font-size: 1.3rem; font-weight: 600; margin: 0 0 5px 0; }
+        .menu-en { font-size: 0.9rem; color: #888; margin: 0 0 15px 0; }
+        
+        .price-cart-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+        }
+        .menu-price { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        
+        .btn-add {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-add:hover { background-color: var(--primary-hover); }
+
+        /* ตะกร้าสินค้า (Cart Sidebar) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: -400px;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.open { right: 0; }
+        
+        .cart-header {
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h2 { margin: 0; font-size: 1.5rem; }
+        .close-cart { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item-info h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
+        .cart-item-price { color: var(--primary); font-weight: 600; }
+        
+        .qty-controls { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { background: #eee; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+        
+        .cart-footer {
+            padding: 20px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            background: #00B900; /* สีเขียว LINE */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-sizing: border-box;
+        }
+        .btn-checkout:hover { background: #009900; }
+
+        /* ปุ่มลอยเปิดตะกร้า */
+        .floating-cart {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.4);
+            z-index: 90;
+            transition: 0.3s;
+        }
+        .floating-cart:hover { transform: scale(1.1); }
+        .cart-badge {
+            position: absolute;
+            top: 0; right: 0;
+            background: #1A1A1A;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav a { margin-left: 15px; font-size: 1rem; }
+            .cart-sidebar { width: 100%; right: -100%; }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <a href="index.html" class="logo">Lanna Eats</a>
+        <a href="index.html" class="logo">Lanna<span>Eats</span></a>
         <nav>
             <a href="index.html">หน้าแรก</a>
-            <a href="menu.html">เมนูอาหาร</a>
+            <a href="menu.html" class="active">เมนูอาหาร</a>
             <a href="order.html">สั่งอาหาร</a>
         </nav>
     </header>
 
+    <div class="page-header">
+        <h1>เมนูความอร่อย</h1>
+        <p>เลือกเมนูอาหารเหนือสูตรต้นตำรับที่คุณชื่นชอบลงในตะกร้าได้เลย</p>
+    </div>
+
     <div class="container">
-        <h2>แคตตาล็อกเมนูทั้งหมด</h2>
         <div class="menu-grid">
-            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยไก่</h3><p>Khao Soi Chicken</p></div><div class="menu-price">69 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยเนื้อ</h3><p>Khao Soi Beef</p></div><div class="menu-price">79 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยเจ</h3><p>Khao Soi Vegan</p></div><div class="menu-price">69 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ไส้อั่ว</h3><p>Sai Ua Sausage</p></div><div class="menu-price">49 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>แคบหมู</h3><p>Pork Crackling</p></div><div class="menu-price">39 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ข้าวซอยทะเล</h3><p>Khao Soi Seafood</p></div><div class="menu-price">99 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ชาเย็น</h3><p>Thai Iced Tea</p></div><div class="menu-price">29 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>น้ำส้ม</h3><p>Orange Juice</p></div><div class="menu-price">35 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ขนมจีนน้ำเงี้ยว</h3><p>Khanom Jeen Nam Ngiao</p></div><div class="menu-price">59 ฿</div></div>
-            <div class="menu-card"><div class="menu-info"><h3>ข้าวเหนียว</h3><p>Sticky Rice</p></div><div class="menu-price">15 ฿</div></div>
-        </div>
-        
-        <div class="bottom-nav">
-            <a href="order.html" class="btn">ไปที่หน้าสั่งอาหาร 👉</a>
+            <!-- เมนู 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594998893017-361fd76fb758?auto=format&fit=crop&w=500&q=60" alt="ข้าวซอยไก่" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ข้าวซอยไก่</h3>
+                    <p class="menu-en">Khao Soi Chicken</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">69 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ข้าวซอยไก่', 69)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=60" alt="ข้าวซอยเนื้อ" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ข้าวซอยเนื้อ</h3>
+                    <p class="menu-en">Khao Soi Beef</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">79 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ข้าวซอยเนื้อ', 79)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=60" alt="ข้าวซอยเจ" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ข้าวซอยเจ</h3>
+                    <p class="menu-en">Khao Soi Vegan</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">69 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ข้าวซอยเจ', 69)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 4 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?auto=format&fit=crop&w=500&q=60" alt="ไส้อั่ว" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ไส้อั่ว</h3>
+                    <p class="menu-en">Sai Ua Sausage</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">49 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ไส้อั่ว', 49)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 5 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60" alt="แคบหมู" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">แคบหมู</h3>
+                    <p class="menu-en">Pork Crackling</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">39 ฿</span>
+                        <button class="btn-add" onclick="addToCart('แคบหมู', 39)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 6 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=60" alt="ข้าวซอยทะเล" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ข้าวซอยทะเล</h3>
+                    <p class="menu-en">Khao Soi Seafood</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">99 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ข้าวซอยทะเล', 99)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 7 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=60" alt="ชาเย็น" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ชาเย็น</h3>
+                    <p class="menu-en">Thai Iced Tea</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">29 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ชาเย็น', 29)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 8 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=500&q=60" alt="น้ำส้ม" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">น้ำส้ม</h3>
+                    <p class="menu-en">Orange Juice</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">35 ฿</span>
+                        <button class="btn-add" onclick="addToCart('น้ำส้ม', 35)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 9 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=500&q=60" alt="ขนมจีนน้ำเงี้ยว" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ขนมจีนน้ำเงี้ยว</h3>
+                    <p class="menu-en">Khanom Jeen Nam Ngiao</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">59 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ขนมจีนน้ำเงี้ยว', 59)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
+            <!-- เมนู 10 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1533622597524-a740fa3d0d82?auto=format&fit=crop&w=500&q=60" alt="ข้าวเหนียว" class="menu-img">
+                <div class="menu-details">
+                    <h3 class="menu-title">ข้าวเหนียว</h3>
+                    <p class="menu-en">Sticky Rice</p>
+                    <div class="price-cart-wrapper">
+                        <span class="menu-price">15 ฿</span>
+                        <button class="btn-add" onclick="addToCart('ข้าวเหนียว', 15)">+ เพิ่ม</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- ปุ่มลอยเปิดตะกร้า -->
+    <div class="floating-cart" onclick="toggleCart()">
+        🛒
+        <div class="cart-badge" id="cart-count">0</div>
+    </div>
+
+    <!-- แถบตะกร้าสินค้า (Sidebar) -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>ออเดอร์ของคุณ</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- สินค้าที่เลือกจะมาแสดงตรงนี้ผ่าน JavaScript -->
+            <p style="text-align: center; color: #888; margin-top: 50px;">ตะกร้ายังว่างเปล่า<br>เลือกเมนูที่ชอบได้เลย!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>ยอดรวม:</span>
+                <span id="total-price">0 ฿</span>
+            </div>
+            <a href="order.html" class="btn-checkout">ยืนยันการสั่งซื้อผ่าน LINE</a>
+        </div>
+    </div>
+
+    <!-- Script สำหรับระบบคำนวณและตะกร้าสินค้า -->
+    <script>
+        let cart = [];
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('open');
+        }
+
+        function addToCart(name, price) {
+            let existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            updateCart();
+            
+            // เปิดตะกร้าให้ลูกค้าดูอัตโนมัติเมื่อกดเพิ่ม
+            document.getElementById('cart-sidebar').classList.add('open');
+        }
+
+        function changeQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1); // ลบออกถ้าจำนวนเหลือน้อยกว่า 1
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItemsDiv = document.getElementById('cart-items');
+            let total = 0;
+            let count = 0;
+            
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p style="text-align: center; color: #888; margin-top: 50px;">ตะกร้ายังว่างเปล่า<br>เลือกเมนูที่ชอบได้เลย!</p>';
+            } else {
+                cartItemsDiv.innerHTML = '';
+                cart.forEach((item, index) => {
+                    total += item.price * item.qty;
+                    count += item.qty;
+                    
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${item.name}</h4>
+                                <span class="cart-item-price">${item.price * item.qty} ฿</span>
+                            </div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('total-price').innerText = total + ' ฿';
+            document.getElementById('cart-count').innerText = count;
+        }
+    </script>
+
 </body>
 </html>
