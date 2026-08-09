@@ -37,6 +37,11 @@
         
         .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; text-transform: uppercase; }
         .logo span { color: var(--primary); }
+        
+        /* สไตล์ปุ่มเมนูมือถือ (ซ่อนไว้ในจอคอม) */
+        .menu-toggle { display: none; color: white; font-size: 1.8rem; cursor: pointer; user-select: none; }
+        
+        nav { display: flex; }
         nav a { color: white; text-decoration: none; margin-left: 30px; font-size: 1.1rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
@@ -56,7 +61,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            align-items: stretch; /* ทำให้กล่องซ้ายขวาสูงเท่ากัน */
+            align-items: stretch; 
         }
 
         .card {
@@ -68,18 +73,16 @@
         
         .card h2 { color: var(--dark); font-size: 1.6rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; margin-bottom: 20px;}
 
-        /* ปรับให้กล่องฝั่งซ้ายอยู่ตรงกลางและบาลานซ์กับฝั่งขวา */
         .order-section { 
             display: flex;
             flex-direction: column;
-            justify-content: center; /* ดันเนื้อหาให้อยู่กึ่งกลางแนวตั้ง */
+            justify-content: center; 
             align-items: center;
             text-align: center; 
         }
         
         .order-section p { color: #555; margin-bottom: 35px; line-height: 1.6; font-size: 1.1rem; }
         
-        /* ปรับปุ่มให้ใหญ่ขึ้น กว้างขึ้น และมีมิติมากขึ้น */
         .btn-line {
             display: flex; justify-content: center; align-items: center; gap: 12px;
             background-color: var(--line-green); color: white;
@@ -102,9 +105,24 @@
 
         footer { text-align: center; padding: 30px; color: #777; font-size: 0.9rem; margin-top: 20px; }
 
+        /* ปรับเมนูมือถือแบบ Dropdown */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            nav a { margin-left: 15px; font-size: 1rem; }
+            header { padding: 15px 20px; flex-wrap: wrap; }
+            .menu-toggle { display: block; }
+            nav {
+                display: none; /* ซ่อนเมนูไว้ก่อน */
+                flex-direction: column;
+                width: 100%;
+                background-color: #222;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            nav.show { display: flex; } /* แสดงเมื่อกดปุ่ม */
+            nav a { margin: 10px 0; text-align: center; padding: 10px; font-size: 1.1rem; }
+            
             .container { grid-template-columns: 1fr; } 
             .btn-line { width: 100%; font-size: 1.2rem; padding: 18px 20px; }
         }
@@ -114,7 +132,9 @@
 
     <header>
         <a href="index.html" class="logo">Lanna<span>Eats</span></a>
-        <nav>
+        <!-- ปุ่ม 3 ขีด สำหรับมือถือ -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="nav-menu">
             <a href="index.html">หน้าแรก</a>
             <a href="menu.html">เมนูอาหาร</a>
             <a href="order.html" class="active">สั่งอาหาร</a>
@@ -127,20 +147,16 @@
     </div>
 
     <div class="container">
-        <!-- ฝั่งซ้าย: ช่องทางติดต่อตามข้อกำหนด -->
         <div class="card order-section">
             <h2>ออเดอร์เลยตอนนี้ 🛵</h2>
             <p>ส่งรายการอาหารที่คุณเลือกไว้ในตะกร้ามาทาง LINE OA เพื่อสั่งอาหาร ทีมงานของเราพร้อมให้บริการรับออเดอร์ของคุณ</p>
-            
             <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="btn-line">
                 💬 สั่งอาหารผ่าน LINE OA
             </a>
         </div>
 
-        <!-- ฝั่งขวา: ข้อมูลสาขาจากไฟล์ stalls.csv -->
         <div class="card">
             <h2>สาขาที่ให้บริการ 📍</h2>
-            
             <div class="branch">
                 <h4>Chang Klan Night Market</h4>
                 <p>📍 ที่ตั้ง: Chang Klan<br>📅 เปิดให้บริการ: 2023-06-01</p>
@@ -159,6 +175,13 @@
     <footer>
         <p>&copy; 2026 Lanna Eats. All rights reserved.</p>
     </footer>
+
+    <!-- Script สำหรับเมนูมือถือ -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("show");
+        }
+    </script>
 
 </body>
 </html>
