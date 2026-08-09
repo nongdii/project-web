@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนูอาหาร - Lanna Eats</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+        header { background-color: #d35400; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: bold; text-decoration: none; color: white; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 500; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        h2 { text-align: center; color: #d35400; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+        .menu-list { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        @media (min-width: 600px) { .menu-list { grid-template-columns: 1fr 1fr; } }
+        .menu-item { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .menu-name { font-weight: bold; font-size: 1.1rem; }
+        .menu-price { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        .btn-order { display: block; text-align: center; background-color: #00B900; color: white; padding: 15px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Lanna Eats</a>
+        <nav>
+            <a href="index.html">หน้าแรก</a>
+            <a href="menu.html">เมนูอาหาร</a>
+            <a href="branches.html">สาขา/ติดต่อ</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>แคตตาล็อกเมนูอาหาร</h2>
+        <div class="menu-list">
+            <div class="menu-item"><span class="menu-name">ข้าวซอยไก่ <br><small>Khao Soi Chicken</small></span><span class="menu-price">69 ฿</span></div>
+            <div class="menu-item"><span class="menu-name">ข้าวซอยเนื้อ <br><small>Khao Soi Beef</small></span><span class="menu-price">79 ฿</span></div>
+            <div class="menu-item"><span class="menu-name">ข้าวซอยเจ <br><small>Khao Soi Vegan</small></span><span class="menu-price">69 ฿</span></div>
+            <div class="menu-item"><span class="menu-name">แคบหมู <br><small>Pork Crackling</small></span><span class="menu-price">39 ฿</span></div>
+            <div class="menu-item"><span class="menu-name">ชาเย็น <br><small>Thai Iced Tea</small></span><span class="menu-price">29 ฿</span></div>
+            <div class="menu-item"><span class="menu-name">ข้าวซอยทะเล <br><small>Khao Soi Seafood</small></span><span class="menu-price">99 ฿</span></div>
+        </div>
+        
+        <!-- กิจกรรมลูกค้า: ช่องทางสั่งซื้อ -->
+        <a href="https://line.me/ti/p/~@lannaeats" target="_blank" class="btn-order">💬 สั่งอาหารผ่าน LINE OA</a>
+    </div>
+
+</body>
+</html>
