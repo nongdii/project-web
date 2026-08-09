@@ -56,28 +56,39 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            align-items: stretch; /* ทำให้กล่องซ้ายขวาสูงเท่ากัน */
         }
 
         .card {
             background: white;
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .card h2 { color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
-
-        .order-section { text-align: center; }
-        .order-section p { color: #555; margin-bottom: 25px; line-height: 1.6; }
         
-        .btn-line {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            background-color: var(--line-green); color: white;
-            padding: 18px 30px; border-radius: 30px;
-            text-decoration: none; font-weight: 600; font-size: 1.2rem;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 185, 0, 0.3);
-            margin-bottom: 20px;
+        .card h2 { color: var(--dark); font-size: 1.6rem; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; margin-bottom: 20px;}
+
+        /* ปรับให้กล่องฝั่งซ้ายอยู่ตรงกลางและบาลานซ์กับฝั่งขวา */
+        .order-section { 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* ดันเนื้อหาให้อยู่กึ่งกลางแนวตั้ง */
+            align-items: center;
+            text-align: center; 
         }
-        .btn-line:hover { background-color: var(--line-hover); transform: translateY(-3px); }
+        
+        .order-section p { color: #555; margin-bottom: 35px; line-height: 1.6; font-size: 1.1rem; }
+        
+        /* ปรับปุ่มให้ใหญ่ขึ้น กว้างขึ้น และมีมิติมากขึ้น */
+        .btn-line {
+            display: flex; justify-content: center; align-items: center; gap: 12px;
+            background-color: var(--line-green); color: white;
+            padding: 22px 40px; border-radius: 50px;
+            text-decoration: none; font-weight: 600; font-size: 1.4rem;
+            width: 85%; max-width: 350px;
+            transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0, 185, 0, 0.35);
+        }
+        .btn-line:hover { background-color: var(--line-hover); transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0, 185, 0, 0.5); }
         
         .branch { 
             background: var(--light); 
@@ -95,6 +106,7 @@
             header { padding: 15px 20px; }
             nav a { margin-left: 15px; font-size: 1rem; }
             .container { grid-template-columns: 1fr; } 
+            .btn-line { width: 100%; font-size: 1.2rem; padding: 18px 20px; }
         }
     </style>
 </head>
