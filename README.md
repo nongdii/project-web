@@ -1,2 +1,2 @@
-# project-web
+# Information-project-web
 website for project 2
